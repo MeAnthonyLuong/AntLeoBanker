@@ -1,5 +1,5 @@
 //
-// Created by <Name> on <Date>.
+// Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
 //
 
 #pragma once
@@ -32,6 +32,8 @@ class AccountTree {
     bool isEmpty() const;
 
   private:
+
+    Account* recRetrieve(const int& accNum, Account*& acc);
     class Node {
       public:
         explicit Node(Account* account)
