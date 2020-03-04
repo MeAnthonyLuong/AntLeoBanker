@@ -22,15 +22,16 @@ class Bank {
     void processTransactions(const string& fileName);
     void displayAllBankBalances() const;
 
+    
     bool openAccount(string firstName, string lastName, int accNum);
     bool withdrawAssets(int accNum, int fund, int amt);
-    bool transferAssets(int accNum1, int transferAmount, int accNum2);
+    bool transferAssets(int accNum1, int transferAmount, int fundType, int accNum2);
     bool depositAssets(int accNum, int amt, int fund);
     void historyTransaction(int accNum);
+
   private:
-    bool insertAccounts(Account acc);
-    bool accountExists(Account acc);
+    bool insertAccounts(Account* acc);
+    bool accountExists(Account* acc);
     AccountTree accounts;
     queue<string> transaction;
-    AccountTree accounts;
 };

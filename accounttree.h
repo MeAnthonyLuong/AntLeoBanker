@@ -8,6 +8,7 @@
 #include <iostream>
 
 class AccountTree {
+
   public:
     // Create BST
     AccountTree();
@@ -22,6 +23,8 @@ class AccountTree {
     // returns true if successful AND *Account points to account
     bool retrieve(const int& accountNumber, Account*& account) const;
 
+    Account* getAccount(const int& accNum);
+    
     // Display information on all accounts
     void display() const;
 
@@ -32,12 +35,12 @@ class AccountTree {
     bool isEmpty() const;
 
   private:
-
-    Account* recRetrieve(const int& accNum, Account*& acc);
     class Node {
+        friend class AccountTree;
+
       public:
         explicit Node(Account* account)
-            : account{account}, right{nullptr}, left{nullptr} {}
+            : account(account), right(nullptr), left(nullptr) {}
 
       private:
         Account* account;
@@ -45,5 +48,10 @@ class AccountTree {
         Node* left;
     };
 
+    bool insert(Node* curr, Account* acc);
+    void display(Node* curr) const;
+    Account* getAccount(const int& accNum, Node* curr);
+
     Node* root;
+    
 };
