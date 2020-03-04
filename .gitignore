@@ -1,0 +1,9 @@
+*.exe
+*.ilk
+*.pdb
+/cmake-build-debug/
+/out/
+/.vs/
+/.idea/
+/CMakeSettings.json
+/banker
