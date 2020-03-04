@@ -24,6 +24,8 @@ class Account {
   
   friend ostream& operator<<(ostream& os, const Account& acc);
   public:
+    Account(int accNum, string firstName, string lastName);
+    ~
     bool withdraw(int fundType, int amt);
     bool deposit(int fundType, int amt);
     
