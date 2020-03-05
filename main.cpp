@@ -1,5 +1,8 @@
 #include "account.h"
 #include "accounttree.h"
+#include "bank.h"
+
+#include <sstream>
 
 int main() {
     Account* acc1 = new Account(1234, "John", "Doe");
@@ -18,10 +21,27 @@ int main() {
     acc1->getHistory();
 
     AccountTree* tree = new AccountTree();
-    cout << (tree->insert(acc2) == 0 ? "false" : "true");
+    tree->insert(acc1);
     cout << (tree->insert(acc2) == 0 ? "false" : "true");
     cout << (tree->insert(acc3) == 0 ? "false" : "true");
     tree->display();
     cout << (tree->isEmpty() == 0 ? "false" : "true");
-    cout << "uh" << endl;
+    delete tree;
+
+    string line = "O Cash Johny 1234";
+    string arr[6];
+    int i = 0;
+    stringstream ssin(line);
+    while (ssin.good() && i < 6) {
+        ssin >> arr[i];
+        ++i;
+    }
+    for (i = 0; i < 4; i++) {
+        cout << arr[i] << endl;
+    }
+
+    cout << stoi("fdsfsfs");
+
+    Bank bank("input.txt");
+    bank.displayAllBankBalances();
 }

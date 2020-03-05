@@ -36,17 +36,21 @@ class AccountTree {
 
   private:
     class Node {
-        friend class AccountTree;
-
       public:
         explicit Node(Account* account)
             : account(account), right(nullptr), left(nullptr) {}
+        Account* getAccount() const;
+        Node* getRight() const;
+        void setRight(Node* newNode);
+        Node* getLeft() const;
+        void setLeft(Node* newNode);
 
       private:
         Account* account;
         Node* right;
         Node* left;
     };
+
     Node* root;
 
     void display(Node* curr) const;
