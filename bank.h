@@ -1,5 +1,5 @@
 //
-// Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
+// Anthony Luong and Leonardo Mota-Villaraldo on 03/03/2020
 //
 
 #pragma once
@@ -17,7 +17,7 @@ class Bank {
     Bank(string inputFile);
     ~Bank();
 
-    bool parseString(string line) const;
+    bool parseString(string line);
     
     void processTransactions(const string& fileName);
     void displayAllBankBalances() const;

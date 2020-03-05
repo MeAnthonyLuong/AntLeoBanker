@@ -24,7 +24,7 @@ class AccountTree {
     bool retrieve(const int& accountNumber, Account*& account) const;
 
     Account* getAccount(const int& accNum);
-    
+
     // Display information on all accounts
     void display() const;
 
@@ -47,11 +47,10 @@ class AccountTree {
         Node* right;
         Node* left;
     };
+    Node* root;
 
-    bool insert(Node* curr, Account* acc);
     void display(Node* curr) const;
     Account* getAccount(const int& accNum, Node* curr);
 
-    Node* root;
-    
+    void recursiveRemove(Node* current);
 };
