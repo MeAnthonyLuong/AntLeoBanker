@@ -20,13 +20,13 @@ bool AccountTree::insert(Account* acc) {
     Node* curr = this->root;
 
     while (curr != nullptr) {
-        if (acc->accNum > curr->getAccount()->accNum) {
+        if (acc->accNum > curr->getNodeAccount()->getAccountNumber()) {
             if (curr->getRight() == nullptr) {
                 curr->setRight(new Node(acc));
                 return true;
             }
             curr = curr->getRight();
-        } else if (acc->accNum < curr->getAccount()->accNum) {
+        } else if (acc->getAccountNumber() < curr->getNodeAccount()->getAccountNumber()) {
             if (curr->getLeft() == nullptr) {
                 curr->setLeft(new Node(acc));
                 return true;
@@ -40,37 +40,36 @@ bool AccountTree::insert(Account* acc) {
 // Retrieve account
 // returns true if successful AND *account points to account
 bool AccountTree::retrieve(const int& accountNumber, Account*& account) const {
-    return true;
+    account = getAccount(accountNumber, root);
+    return account != nullptr;
 }
 
-Account* AccountTree::getAccount(const int& accNum) {
-    getAccount(accNum, root);
-}
-
-Account* AccountTree::getAccount(const int& accNum, Node* curr) {
+Account* AccountTree::getAccount(const int& accNum, Node* curr) const {
     if (curr == nullptr) {
         return nullptr;
     }
 
-    if (accNum == curr->getAccount()->accNum) {
-        return curr->getAccount();
+    if (accNum == curr->getNodeAccount()->getAccountNumber()) {
+        return curr->getNodeAccount();
     }
 
-    if (accNum < curr->getAccount()->accNum) {
+    if (accNum < curr->getNodeAccount()->accNum) {
         return getAccount(accNum, curr->getLeft());
     } else {
         return getAccount(accNum, curr->getRight());
     }
 }
+
 AccountTree::Node* AccountTree::Node::getRight() const { return right; }
 
 void AccountTree::Node::setRight(Node* newNode) { right = newNode; }
 
-Account* AccountTree::Node::getAccount() const { return account; }
+Account* AccountTree::Node::getNodeAccount() const { return account; }
 
 AccountTree::Node* AccountTree::Node::getLeft() const { return left; }
 
 void AccountTree::Node::setLeft(Node* newNode) { left = newNode; }
+
 
 // Display information on all accounts
 void AccountTree::display() const { display(root); }
@@ -80,8 +79,8 @@ void AccountTree::display(Node* curr) const {
         return;
     }
     display(curr->getLeft());
-    cout << *(curr->getAccount()) << endl;
-    display(curr->getLeft());
+    cout << *(curr->getNodeAccount()) << endl;
+    display(curr->getRight());
 }
 
 // delete all information in AccountTree
@@ -102,7 +101,5 @@ void AccountTree::recursiveRemove(Node* curr) {
     }
     recursiveRemove(curr->getLeft());
     recursiveRemove(curr->getRight());
-    Account* tmp = curr->getAccount();
-    delete tmp;
-    delete curr;
-}
+    delete curr->getNodeAccount();
+} 

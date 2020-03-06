@@ -28,9 +28,9 @@ class Account {
     bool deposit(int fundType, int amt);
     bool transfer(Account& otherAcc, int fundType, int amt);
     const deque<string> getHistory();
+    int getAccountNumber() const;
 
-  private:
-    deque<string> history;
+        private : deque<string> history;
     const static int MAX_ACC = 10;
     int accNum;
 

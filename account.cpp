@@ -110,3 +110,7 @@ const deque<string> Account::getHistory() {
 
   return history;
 }
+
+int Account::getAccountNumber() const {
+  return accNum;
+}
