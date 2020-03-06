@@ -35,11 +35,11 @@ bool Account::withdraw(int fundType, int amt) {
       if (amt <= totalMoneyMarket) {
         funds[1] -= amt - funds[0];
         funds[0] = 0;
-        history.push_back("Withdraw");
+        history.push_back("\tW" + to_string(accNum) + to_string(amt));
         return true;
       } else {
-        throw "withdraw err";
-        return false;
+          history.push_back("\tW" + to_string(accNum) + to_string(amt) + " (Failed)");
+          return false;
       }
     }
     funds[0] -= amt;
@@ -49,22 +49,22 @@ bool Account::withdraw(int fundType, int amt) {
       if (amt <= totalMoneyMarket) {
         funds[0] -= amt - funds[1];
         funds[1] = 0;
-        history.push_back("Withdraw");
+        history.push_back("\tW " + to_string(accNum) + to_string(amt));
         return true;
       } else {
-        throw "withdraw err";
-        return false;
+          history.push_back("\tW " + to_string(accNum) + to_string(amt) + " (Failed)");
+          return false;
       }
     }
     funds[1] -= amt;
     return true;
   default:
     if (amt > funds[fundType]) {
-      throw "withdraw err";
-      return false;
+        history.push_back("\tW " + to_string(accNum) + to_string(amt) + " (Failed)");
+        return false;
     }
     funds[fundType] -= amt;
-    history.push_back("Withdraw");
+    history.push_back("\tW " + to_string(accNum) + to_string(amt));
     return true;
   }
 }
@@ -75,9 +75,10 @@ bool Account::deposit(int fundType, int amt) {
     return false;
   if (amt > 0) {
     funds[fundType] += amt;
-    history.push_back("Desposited");
+    history.push_back("\tD " + to_string(accNum) + to_string(amt));
     return true;
   }
+  history.push_back("\tD " + to_string(accNum) + to_string(amt) + " (Failed)");
   return false;
 }
 
