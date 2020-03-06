@@ -101,9 +101,9 @@ bool Bank::parseString(string line)  {
         int accountNumber = stoi(params[3]);
         // We cannot open an account with more than 4 characters.
         if (accountNumber > 9999) {
-            throw "err";
+            throw "ERROR: Account " + to_string(accountNumber) + " is not within bounds. Transaction refused.";
+            return false;
         }
-
         return openAccount(firstName, lastName, accountNumber);
     } else if (operation == "W" || operation == "D") {
         int accountNumber = stoi(params[1]); //add try catch later
@@ -112,13 +112,31 @@ bool Bank::parseString(string line)  {
         if (accountNumber > 99999 && accountNumber < 10000) {
             throw "err";
         }
-        // extract the parameters
-        // if operation == w call withdraw else call deposit
+        int fundType = accountNumber % 10;
+        accountNumber /= 10;
+        Account* acc;
+        accounts.retrieve(accountNumber, acc);
+
+        if(operation == "W") {
+            return acc->withdraw(fundType, moneyValue);
+        }
+
+        return acc->deposit(fundType, moneyValue);
     } else if (operation == "H") {
         int accountNumber = stoi(params[1]);
         if (accountNumber < 1000 && accountNumber > 99999) {
             throw "err";
+            return false;
         }
+        
+        if(accountNumber > 9999) {
+            // print only the fund type            
+        }
+        
+        Account* acc;
+        accounts.retrieve(accountNumber, acc);
+        acc->getHistory();
+        return true;
         //print history depending on the length
 
     } else if (operation == "T") {
@@ -127,9 +145,10 @@ bool Bank::parseString(string line)  {
         int transferAmount = stoi(params[2]);
         if(accountNumber1 > 99999 || accountNumber2 > 99999) {
             throw "err";
+            return false;
         }
         // add giver and receiver
-        transferAssets(accountNumber1, transferAmount, 1,
+        return transferAssets(accountNumber1, transferAmount, 1,
                        accountNumber2);
     }
 }

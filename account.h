@@ -29,7 +29,7 @@ class Account {
     const deque<string> getHistory();
     int getAccountNumber() const;
 
-        private : deque<string> history;
+    private : deque<string> history;
     const static int MAX_ACC = 10;
     int accNum;
 
