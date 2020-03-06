@@ -20,13 +20,15 @@ bool AccountTree::insert(Account* acc) {
     Node* curr = this->root;
 
     while (curr != nullptr) {
-        if (acc->getAccountNumber() > curr->getNodeAccount()->getAccountNumber()) {
+        if (acc->getAccountNumber() >
+            curr->getNodeAccount()->getAccountNumber()) {
             if (curr->getRight() == nullptr) {
                 curr->setRight(new Node(acc));
                 return true;
             }
             curr = curr->getRight();
-        } else if (acc->getAccountNumber() < curr->getNodeAccount()->getAccountNumber()) {
+        } else if (acc->getAccountNumber() <
+                   curr->getNodeAccount()->getAccountNumber()) {
             if (curr->getLeft() == nullptr) {
                 curr->setLeft(new Node(acc));
                 return true;
@@ -101,4 +103,4 @@ void AccountTree::recursiveRemove(Node* curr) {
     recursiveRemove(curr->getLeft());
     recursiveRemove(curr->getRight());
     delete curr->getNodeAccount();
-} 
+}

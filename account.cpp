@@ -120,7 +120,7 @@ void Account::getHistory(int fundType) {
     if (fundType == -1) {
         while (!history.empty()) {
             tmp.push_back(history.front());
-            cerr << history.front() << endl;
+            cout << history.front() << endl;
             history.pop_front();
         }
         while (!tmp.empty()) {

@@ -96,7 +96,6 @@ bool Bank::parseString(string line) {
     string operation = params[0];
     // check if it is a char, if not it is invalid syntax
     if (operation == "O") {
-        cerr << "open" << endl;
         string firstName = params[1];
         string lastName = params[2];
         int accountNumber = stoi(params[3]);
@@ -120,26 +119,24 @@ bool Bank::parseString(string line) {
         accounts.retrieve(accountNumber, acc);
 
         if (operation == "W") {
-            cerr << "withdraw" << endl;
             return acc->withdraw(fundType, moneyValue);
         }
 
-        cerr << "deposit" << endl;
         return acc->deposit(fundType, moneyValue);
     } else if (operation == "H") {
-        cerr << "history" << endl;
         int accountNumber = stoi(params[1]);
         if (accountNumber < 1000 && accountNumber > 99999) {
             throw "err";
             return false;
         }
 
+        int fundType;
         if (accountNumber > 9999) {
+            accountNumber /= 10;
+            fundType = accountNumber % 10;
             // print only the fund type
         }
 
-        int fundType = accountNumber % 10;
-        accountNumber /= 10;
         Account* acc;
         accounts.retrieve(accountNumber, acc);
         acc->getHistory();
@@ -147,7 +144,6 @@ bool Bank::parseString(string line) {
         // print history depending on the length
 
     } else if (operation == "T") {
-        cerr << "transfer" << endl;
         int accountNumber1 = stoi(params[1]);
         int accountNumber2 = stoi(params[3]);
         int transferAmount = stoi(params[2]);
