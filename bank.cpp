@@ -53,18 +53,22 @@ bool Bank::openAccount(string firstName, string lastName, int accNum)  {
 }
 
 bool Bank::withdrawAssets(int accNum, int fund, int amt)  {
-    Account* acc = accounts.getAccount(accNum);
+    Account* acc;
+    accounts.retrieve(accNum, acc);
     return acc->withdraw(fund, amt);
 }
 
 bool Bank::transferAssets(int accNum1, int transferAmount, int fundType, int accNum2)  {
-    Account* acc = accounts.getAccount(accNum1);
-    Account* acc2 = accounts.getAccount(accNum2);
+    Account* acc;
+    accounts.retrieve(accNum1, acc);
+    Account* acc2;
+    accounts.retrieve(accNum2, acc2);
     return acc->transfer(*acc2, fundType, transferAmount);
 }
 
 bool Bank::depositAssets(int accNum, int amt, int fund)  {
-    Account* acc = accounts.getAccount(accNum);
+    Account* acc;
+    accounts.retrieve(accNum, acc);
     return acc->deposit(fund, amt);
 }
 

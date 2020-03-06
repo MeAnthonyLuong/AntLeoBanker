@@ -23,8 +23,6 @@ class AccountTree {
     // returns true if successful AND *Account points to account
     bool retrieve(const int& accountNumber, Account*& account) const;
 
-    Account* getAccount(const int& accNum);
-
     // Display information on all accounts
     void display() const;
 
@@ -39,7 +37,7 @@ class AccountTree {
       public:
         explicit Node(Account* account)
             : account(account), right(nullptr), left(nullptr) {}
-        Account* getAccount() const;
+        Account* getNodeAccount() const;
         Node* getRight() const;
         void setRight(Node* newNode);
         Node* getLeft() const;
@@ -54,7 +52,7 @@ class AccountTree {
     Node* root;
 
     void display(Node* curr) const;
-    Account* getAccount(const int& accNum, Node* curr);
+    Account* getAccount(const int& accNum, Node* curr) const;
 
     void recursiveRemove(Node* current);
 };
