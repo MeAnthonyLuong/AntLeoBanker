@@ -161,17 +161,8 @@ bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
 // Displays the history according to fundType. If no fund type is provided the
 // function will display history logs for each fund type.
 void Account::getHistory(int fundType) {
-    deque<string> tmp;
-    if (fundType == -1) {
-        while (!history.empty()) {
-            tmp.push_back(history.front());
-            cout << history.front() << endl;
-            history.pop_front();
-        }
-        while (!tmp.empty()) {
-            history.push_back(tmp.front());
-            tmp.pop_front();
-        }
+    for (auto it = history.begin(); it != history.end(); it++) {
+        cout << *it << endl;
     }
 }
 
