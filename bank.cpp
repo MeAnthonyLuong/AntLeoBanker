@@ -65,7 +65,7 @@ bool Bank::transferAssets(int accNum1, int transferAmount, int fundType1,
     accounts.retrieve(accNum1, acc);
     Account* acc2;
     accounts.retrieve(accNum2, acc2);
-    return acc->transfer(*acc2, fundType1, fundType2, transferAmount);
+    return acc->transfer(acc2, fundType1, fundType2, transferAmount);
 }
 
 bool Bank::depositAssets(int accNum, int amt, int fund) {
@@ -161,7 +161,9 @@ bool Bank::parseString(string line) {
         accountNumber1 /= 10;
         accountNumber2 /= 10;
         // add giver and receiver
-        return transferAssets(accountNumber1, transferAmount, fundType1, fundType2,
-                              accountNumber2);
+        return transferAssets(accountNumber1, transferAmount, fundType1,
+                              fundType2, accountNumber2);
     }
+
+    return false;
 }

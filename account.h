@@ -25,11 +25,12 @@ class Account {
     ~Account();
     bool withdraw(int fundType, int amt);
     bool deposit(int fundType, int amt);
-    bool transfer(Account& otherAcc, int fundType1, int fundType2, int amt);
-    const deque<string> getHistory(int fundType = -1);
+    bool transfer(Account* otherAcc, int fundType1, int fundType2, int amt);
+    void getHistory(int fundType = -1);
     int getAccountNumber() const;
 
-    private : deque<string> history;
+  private:
+    deque<string> history;
     const static int MAX_ACC = 10;
     int accNum;
 

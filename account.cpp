@@ -2,7 +2,6 @@
 // Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
 //
 
-#pragma once
 #include "account.h"
 
 using namespace std;
@@ -90,19 +89,18 @@ bool Account::deposit(int fundType, int amt) {
     return false;
 }
 
-bool Account::transfer(Account& otherAcc, int fundType1, int fundType2,
+bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
                        int amt) {
-    if (&otherAcc == nullptr) {
-        cout << "failed" << endl;
+    if (otherAcc == nullptr) {
         return false;
     }
     string account1WithFund = to_string(accNum) + to_string(fundType1);
     string account2WithFund =
-        to_string(otherAcc.getAccountNumber()) + to_string(fundType2);
+        to_string(otherAcc->getAccountNumber()) + to_string(fundType2);
 
     if (funds[fundType1] >= amt) {
-        otherAcc.deposit(fundType2, amt);
-        if (&otherAcc == &*this) {
+        otherAcc->deposit(fundType2, amt);
+        if (otherAcc == &*this) {
             // History should only include the transfer if it's to itself
             history.pop_back();
         }
@@ -117,20 +115,18 @@ bool Account::transfer(Account& otherAcc, int fundType1, int fundType2,
     return false;
 }
 
-const deque<string> Account::getHistory(int fundType) {
+void Account::getHistory(int fundType) {
     deque<string> tmp;
-    if (fundType = -1) {
+    if (fundType == -1) {
         while (!history.empty()) {
             tmp.push_back(history.front());
-            cout << history.front() << endl;
+            cerr << history.front() << endl;
             history.pop_front();
         }
         while (!tmp.empty()) {
             history.push_back(tmp.front());
             tmp.pop_front();
         }
-
-        return history;
     }
 }
 
