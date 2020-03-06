@@ -82,34 +82,36 @@ bool Account::deposit(int fundType, int amt) {
   return false;
 }
 
-bool Account::transfer(Account &otherAcc, int fundType, int amt) {
-  if (funds[fundType] >= amt) {
-    otherAcc.deposit(fundType, amt);
+bool Account::transfer(Account &otherAcc, int fundType1, int fundType2, int amt) {
+  if (funds[fundType1] >= amt) {
+    otherAcc.deposit(fundType2, amt);
     if (&otherAcc == &*this) {
       // History should only include the transfer if it's to itself
       history.pop_back();
     }
-    funds[fundType] -= amt;
-    history.push_back("Transfer");
+    funds[fundType1] -= amt;
+    history.push_back("\tT " + to_string(accNum) + to_string(amt));
     return true;
   }
-
+  history.push_back("\tERROR: Insufficient funds to transfer.");
   return false;
 }
 
-const deque<string> Account::getHistory() {
+const deque<string> Account::getHistory(int fundType) {
   deque<string> tmp;
-  while (!history.empty()) {
-    tmp.push_back(history.front());
-    cout << history.front() << endl;
-    history.pop_front();
-  }
-  while (!tmp.empty()) {
-    history.push_back(tmp.front());
-    tmp.pop_front();
-  }
+  if(fundType = -1) {
+    while (!history.empty()) {
+      tmp.push_back(history.front());
+      cout << history.front() << endl;
+      history.pop_front();
+    }
+    while (!tmp.empty()) {
+      history.push_back(tmp.front());
+      tmp.pop_front();
+    }
 
-  return history;
+    return history;
+  }
 }
 
 int Account::getAccountNumber() const {
