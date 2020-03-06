@@ -35,12 +35,18 @@ class AccountTree {
   private:
     class Node {
       public:
+        // Constructor for Node class.
         explicit Node(Account* account)
             : account(account), right(nullptr), left(nullptr) {}
+        // Returns an account pointer to the account of this node.
         Account* getNodeAccount() const;
+        // Returns the right node of this node.
         Node* getRight() const;
+        // Sets the right node of this node to newNode.
         void setRight(Node* newNode);
+        // Returns the left node if this node.
         Node* getLeft() const;
+        // Sets the left node of this node to newNode.
         void setLeft(Node* newNode);
 
       private:
@@ -51,8 +57,13 @@ class AccountTree {
 
     Node* root;
 
+    // Private overloaded display function.
     void display(Node* curr) const;
+
+    // Private function that gets the account given an account number and
+    // starting node.
     Account* getAccount(const int& accNum, Node* curr) const;
 
+    // Recursively frees up memory used up the AccountTree.
     void recursiveRemove(Node* current);
 };
