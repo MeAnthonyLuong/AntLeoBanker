@@ -18,7 +18,6 @@ const string FUNDS[10] = {"Money Market",       "Prime Money Market",
                           "Value Fund",         "Value Stock Index"};
 
 class Account {
-    friend class AccountTree;
     friend ostream& operator<<(ostream& os, const Account& acc);
 
   public:

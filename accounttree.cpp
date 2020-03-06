@@ -20,7 +20,7 @@ bool AccountTree::insert(Account* acc) {
     Node* curr = this->root;
 
     while (curr != nullptr) {
-        if (acc->accNum > curr->getNodeAccount()->getAccountNumber()) {
+        if (acc->getAccountNumber() > curr->getNodeAccount()->getAccountNumber()) {
             if (curr->getRight() == nullptr) {
                 curr->setRight(new Node(acc));
                 return true;
@@ -53,7 +53,7 @@ Account* AccountTree::getAccount(const int& accNum, Node* curr) const {
         return curr->getNodeAccount();
     }
 
-    if (accNum < curr->getNodeAccount()->accNum) {
+    if (accNum < curr->getNodeAccount()->getAccountNumber()) {
         return getAccount(accNum, curr->getLeft());
     } else {
         return getAccount(accNum, curr->getRight());
@@ -69,7 +69,6 @@ Account* AccountTree::Node::getNodeAccount() const { return account; }
 AccountTree::Node* AccountTree::Node::getLeft() const { return left; }
 
 void AccountTree::Node::setLeft(Node* newNode) { left = newNode; }
-
 
 // Display information on all accounts
 void AccountTree::display() const { display(root); }
