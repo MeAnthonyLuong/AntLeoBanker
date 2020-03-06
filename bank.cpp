@@ -138,6 +138,8 @@ bool Bank::parseString(string line) {
             // print only the fund type
         }
 
+        int fundType = accountNumber % 10;
+        accountNumber /= 10;
         Account* acc;
         accounts.retrieve(accountNumber, acc);
         acc->getHistory();
