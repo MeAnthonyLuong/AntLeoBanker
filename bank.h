@@ -6,27 +6,28 @@
 
 #include "accounttree.h"
 #include <fstream>
-#include <string>
 #include <queue>
+#include <string>
 
 using namespace std;
 
 class Bank {
-  friend ostream& operator<<(ostream& os, Bank& bank);
+    friend ostream& operator<<(ostream& os, Bank& bank);
+
   public:
     Bank(string inputFile);
     Bank();
     ~Bank();
 
     bool parseString(string line);
-    
+
     void processTransactions(const string& fileName);
     void displayAllBankBalances() const;
 
-    
     bool openAccount(string firstName, string lastName, int accNum);
     bool withdrawAssets(int accNum, int fund, int amt);
-    bool transferAssets(int accNum1, int transferAmount, int fundType1, int fundType2, int accNum2);
+    bool transferAssets(int accNum1, int transferAmount, int fundType1,
+                        int fundType2, int accNum2);
     bool depositAssets(int accNum, int amt, int fund);
     void historyTransaction(int accNum);
 

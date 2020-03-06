@@ -2,7 +2,6 @@
 // Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
 //
 
-#pragma once
 #include "account.h"
 
 using namespace std;
@@ -11,7 +10,8 @@ ostream& operator<<(ostream& os, const Account& acc) {
     os << acc.firstName << " " << acc.lastName << " ID: " << acc.accNum << endl;
 
     for (int fundType = 0; fundType < 10; fundType++) {
-        os << "\t" << FUNDS[fundType] << ": $" << acc.funds[fundType] << endl;
+        os << "\t" << acc.FUNDS[fundType] << ": $" << acc.funds[fundType]
+           << endl;
     }
     return os;
 }
@@ -66,7 +66,8 @@ bool Account::withdraw(int fundType, int amt) {
         return true;
     default:
         if (amt > funds[fundType]) {
-            history.push_back("\tW " + accountWithFund + " (Failed)");
+            history.push_back("\tW " + accountWithFund + " " + to_string(amt) +
+                              " (Failed)");
             return false;
         }
         funds[fundType] -= amt;
@@ -90,25 +91,24 @@ bool Account::deposit(int fundType, int amt) {
     return false;
 }
 
-bool Account::transfer(Account& otherAcc, int fundType1, int fundType2,
+bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
                        int amt) {
-    if (&otherAcc == nullptr) {
-        cout << "failed" << endl;
+    if (otherAcc == nullptr) {
+        // this isn't working
+        history.push_back("\tERROR: Target account does not exist.");
         return false;
     }
     string account1WithFund = to_string(accNum) + to_string(fundType1);
     string account2WithFund =
-        to_string(otherAcc.getAccountNumber()) + to_string(fundType2);
+        to_string(otherAcc->getAccountNumber()) + to_string(fundType2);
 
     if (funds[fundType1] >= amt) {
-        otherAcc.deposit(fundType2, amt);
-        if (&otherAcc == &*this) {
+        otherAcc->deposit(fundType2, amt);
+        if (otherAcc == &*this) {
             // History should only include the transfer if it's to itself
             history.pop_back();
         }
         funds[fundType1] -= amt;
-        history.push_back("\tT " + account1WithFund + " " + to_string(amt) +
-                          " " + account2WithFund);
         history.push_back("\tT " + account1WithFund + " " + to_string(amt) +
                           " " + account2WithFund);
         return true;
@@ -117,9 +117,9 @@ bool Account::transfer(Account& otherAcc, int fundType1, int fundType2,
     return false;
 }
 
-const deque<string> Account::getHistory(int fundType) {
+void Account::getHistory(int fundType) {
     deque<string> tmp;
-    if (fundType = -1) {
+    if (fundType == -1) {
         while (!history.empty()) {
             tmp.push_back(history.front());
             cout << history.front() << endl;
@@ -129,8 +129,6 @@ const deque<string> Account::getHistory(int fundType) {
             history.push_back(tmp.front());
             tmp.pop_front();
         }
-
-        return history;
     }
 }
 
