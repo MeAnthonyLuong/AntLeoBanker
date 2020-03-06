@@ -10,7 +10,8 @@ ostream& operator<<(ostream& os, const Account& acc) {
     os << acc.firstName << " " << acc.lastName << " ID: " << acc.accNum << endl;
 
     for (int fundType = 0; fundType < 10; fundType++) {
-        os << "\t" << FUNDS[fundType] << ": $" << acc.funds[fundType] << endl;
+        os << "\t" << acc.FUNDS[fundType] << ": $" << acc.funds[fundType]
+           << endl;
     }
     return os;
 }
@@ -65,7 +66,8 @@ bool Account::withdraw(int fundType, int amt) {
         return true;
     default:
         if (amt > funds[fundType]) {
-            history.push_back("\tW " + accountWithFund + " (Failed)");
+            history.push_back("\tW " + accountWithFund + " " + to_string(amt) +
+                              " (Failed)");
             return false;
         }
         funds[fundType] -= amt;
@@ -92,6 +94,8 @@ bool Account::deposit(int fundType, int amt) {
 bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
                        int amt) {
     if (otherAcc == nullptr) {
+        // this isn't working
+        history.push_back("\tERROR: Target account does not exist.");
         return false;
     }
     string account1WithFund = to_string(accNum) + to_string(fundType1);
@@ -105,8 +109,6 @@ bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
             history.pop_back();
         }
         funds[fundType1] -= amt;
-        history.push_back("\tT " + account1WithFund + " " + to_string(amt) +
-                          " " + account2WithFund);
         history.push_back("\tT " + account1WithFund + " " + to_string(amt) +
                           " " + account2WithFund);
         return true;
