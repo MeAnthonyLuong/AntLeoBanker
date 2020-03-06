@@ -15,6 +15,7 @@ class Bank {
   friend ostream& operator<<(ostream& os, Bank& bank);
   public:
     Bank(string inputFile);
+    Bank();
     ~Bank();
 
     bool parseString(string line);

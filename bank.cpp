@@ -7,7 +7,7 @@
 // empty
 
 Bank::Bank(string fileName) { processTransactions(fileName); }
-
+Bank::Bank() {}
 Bank::~Bank() = default;
 
 // reads files and builds line by line queue for FIFO processing
@@ -38,7 +38,7 @@ void Bank::processTransactions(const string& fileName) {
 }
 
 bool Bank::accountExists(Account* acc) {
-    return false;
+    return accounts.retrieve(acc->getAccountNumber(), acc);
 }
 
 bool Bank::openAccount(string firstName, string lastName, int accNum)  {
@@ -73,7 +73,9 @@ bool Bank::depositAssets(int accNum, int amt, int fund)  {
 }
 
 void Bank::historyTransaction(int accNum)  {
-
+    Account* acc;
+    accounts.retrieve(accNum, acc);
+    acc->getHistory();
 }
 
 void Bank::displayAllBankBalances()  const {
