@@ -7,6 +7,7 @@
 #include <deque>
 #include <iostream>
 #include <string>
+#include "funds.h"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ class Account {
                               "Growth Equity Fund", "Growth Index Fund",
                               "Value Fund",         "Value Stock Index"};
     // Double ended queue containing history log of transactions.
-    deque<string> history;
+    Funds history[10];
     // Max amount of fund types allowed.
     const static int MAX_ACC = 10;
     // A four digit account number.

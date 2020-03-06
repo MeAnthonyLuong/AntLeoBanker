@@ -161,10 +161,13 @@ bool Account::transfer(Account* otherAcc, int fundType1, int fundType2,
 // Displays the history according to fundType. If no fund type is provided the
 // function will display history logs for each fund type.
 void Account::getHistory(int fundType) {
-    for (auto it = history.begin(); it != history.end(); it++) {
-        cout << *it << endl;
+    // [MoneyMarket, OtherFunds, n]
+    for(int i = 0; i < MAX_ACC; i++) {
+        cout << FUNDS[i] << ": $" << funds[i];
+        cout << history[i] << endl;
     }
 }
 
 // Returns the account number of this account.
 int Account::getAccountNumber() const { return accNum; }
+y
