@@ -7,7 +7,7 @@
 // empty
 
 Bank::Bank(string fileName) { processTransactions(fileName); }
-
+Bank::Bank() {}
 Bank::~Bank() = default;
 
 // reads files and builds line by line queue for FIFO processing
