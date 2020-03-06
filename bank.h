@@ -15,6 +15,7 @@ class Bank {
   friend ostream& operator<<(ostream& os, Bank& bank);
   public:
     Bank(string inputFile);
+    Bank();
     ~Bank();
 
     bool parseString(string line);
@@ -28,6 +29,7 @@ class Bank {
     bool transferAssets(int accNum1, int transferAmount, int fundType, int accNum2);
     bool depositAssets(int accNum, int amt, int fund);
     void historyTransaction(int accNum);
+    // test
 
   private:
     bool insertAccounts(Account* acc);
