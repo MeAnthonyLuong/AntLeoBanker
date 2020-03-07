@@ -1,4 +1,5 @@
 #include <deque>
+#include <iostream>
 using namespace std;
 class Funds {
     friend ostream& operator<<(ostream& os, Funds& funds) {
