@@ -48,7 +48,7 @@ bool AccountTree::insert(Account* acc) {
 }
 
 // returns true if successful AND *account points to account
-bool AccountTree::retrieve(const int& accountNumber, const Account*& account) const {
+bool AccountTree::retrieve(const int& accountNumber, Account*& account) const {
     account = getAccount(accountNumber, root);
     return account != nullptr;
 }
@@ -128,4 +128,5 @@ void AccountTree::recursiveRemove(Node* curr) {
     recursiveRemove(curr->getLeft());
     recursiveRemove(curr->getRight());
     delete curr->getNodeAccount();
+    delete curr;
 }
