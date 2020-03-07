@@ -38,6 +38,8 @@ void Bank::processTransactions(const string& fileName) {
         // Remove the line from the queue.
         transaction.pop();
     }
+
+    displayAllBankBalances();
 }
 
 // Returns true if acc exists within the AccountTree of this bank.
@@ -55,7 +57,7 @@ bool Bank::openAccount(string firstName, string lastName, int accNum) {
         // Delete the allocated memory since the account already exists.
         delete newAcc;
         cout << "ERROR: Account " << accNum
-             << "is already open. Transaction refused." << endl;
+             << " is already open. Transaction refused." << endl;
         return false;
     }
     accounts.insert(newAcc);
@@ -66,6 +68,10 @@ bool Bank::openAccount(string firstName, string lastName, int accNum) {
 bool Bank::withdrawAssets(int accNum, int fund, int amt) {
     Account* acc;
     accounts.retrieve(accNum, acc);
+    if(acc == nullptr) {
+        cout << "ERROR: Could not find Account " << accNum << " Withdraw cancelled." << endl;
+        return false;
+    }
     return acc->withdraw(fund, amt);
 }
 
@@ -77,25 +83,42 @@ bool Bank::transferAssets(int accNum1, int transferAmount, int fundType1,
     accounts.retrieve(accNum1, acc);
     Account* acc2;
     accounts.retrieve(accNum2, acc2);
+    if(acc == nullptr || acc2 == nullptr) {
+        cout << "ERROR: Could not find Account " << (acc == nullptr ? accNum1 : accNum2) << " Transfer cancelled." << endl;
+        return false;
+    }
     return acc->transfer(acc2, fundType1, fundType2, transferAmount);
 }
 
 // Returns true if depositing was successful, otherwise false.
-bool Bank::depositAssets(int accNum, int amt, int fund) {
+bool Bank::depositAssets(int accNum, int fund, int amt) {
     Account* acc;
     accounts.retrieve(accNum, acc);
+    if (acc == nullptr) {
+        cout << "ERROR: Could not find Account " << accNum
+             << " Deposit cancelled." << endl;
+        return false;
+    }
     return acc->deposit(fund, amt);
 }
 
 // Displays all the history of the given account number.
-void Bank::historyTransaction(int accNum) {
+void Bank::historyTransaction(int accNum, int fundType) {
     Account* acc;
     accounts.retrieve(accNum, acc);
-    acc->getHistory();
+    if (acc == nullptr) {
+        cout << "ERROR: Could not find Account " << accNum
+             << " History cancelled." << endl;
+        return;
+    }
+    acc->getHistory(fundType);
 }
 
 // Displays total balances for every account in the account tree of this bank.
-void Bank::displayAllBankBalances() const { accounts.display(); }
+void Bank::displayAllBankBalances() const {
+    cout << "\nProcessing Done. Final Balances." << endl;
+    accounts.display();
+}
 
 // Returns true if string was successfully parsed, other wise returns false.
 bool Bank::parseString(string line) {
@@ -143,19 +166,13 @@ bool Bank::parseString(string line) {
         // Remove the last digit to ensure the account can be found if it
         // exists.
         accountNumber /= 10;
-        Account* acc;
-        accounts.retrieve(accountNumber, acc);
-        if (acc == nullptr) {
-            throw "err";
-            return false;
-        }
 
         if (operation == "W") {
-            return acc->withdraw(fundType, moneyValue);
+            return withdrawAssets(accountNumber, fundType, moneyValue);
         }
 
         // If it wasn't withdraw it has to be deposit.
-        return acc->deposit(fundType, moneyValue);
+        return depositAssets(accountNumber, fundType, moneyValue);
     } else if (operation == "H") {
         // params = [operation, accountNumber]
         int accountNumber = stoi(params[1]);
@@ -165,7 +182,7 @@ bool Bank::parseString(string line) {
             return false;
         }
 
-        int fundType;
+        int fundType = -1;
         // Because you can call history on a specific fund type we should
         // extract it. But only if account number has a fifth digit.
         if (accountNumber > 9999) {
@@ -176,13 +193,7 @@ bool Bank::parseString(string line) {
             // print only the fund type
         }
 
-        Account* acc;
-        accounts.retrieve(accountNumber, acc);
-        if (acc == nullptr) {
-            throw "err";
-            return false;
-        }
-        acc->getHistory();
+        historyTransaction(accountNumber, fundType);
         return true;
     } else if (operation == "T") {
         // params = [operation, accountNumber1, amount, accountNumber2]

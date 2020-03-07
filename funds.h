@@ -1,15 +1,21 @@
 #include <deque>
+using namespace std;
 class Funds {
-    friend ostream& operator<<(ostream& os, MoneyMarket& moneyMarket) {
-        for (int i = history.begin(); it != history.end(); it++) {
-            cout << *it << endl;
+    friend ostream& operator<<(ostream& os, Funds& funds) {
+        for (auto it = funds.history->begin(); it != funds.history->end();
+             it++) {
+            if (it == funds.history->end() - 1) {
+                os << *it;
+            } else {
+                os << *it << endl;
+            }
         }
+        return os;
     }
 
   private:
-    std::deque<Funds> history;
+    deque<string>* history = new deque<string>;
 
   public:
-    std::deque<Funds> getHistory() { return history; }
-    void display() const;
+    deque<string>* getHistory() { return history; }
 };
