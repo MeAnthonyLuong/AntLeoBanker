@@ -38,7 +38,7 @@ class Bank {
     // Deposits money into an account.
     bool depositAssets(int accNum, int amt, int fund);
     // Displays history of an account.
-    void historyTransaction(int accNum);
+    void historyTransaction(int accNum, int fundType = -1);
 
   private:
     // inserts an account into the account tree.
