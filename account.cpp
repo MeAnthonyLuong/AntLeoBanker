@@ -9,7 +9,6 @@ using namespace std;
 // Outputs the first name, last name, account number, and total funds in each
 // fund type.
 ostream& operator<<(ostream& os, const Account& acc) {
-    cout << "Processing Done. Final Balances" << endl;
     os << acc.firstName << " " << acc.lastName << " Account ID: " << acc.accNum
        << endl;
 
@@ -33,7 +32,7 @@ Account::Account(int accNum, string firstName, string lastName)
 }
 
 // Destructor that runs the clear function to free up used memory.
-Account::~Account(){};
+Account::~Account() = default;
 
 // Return true if a withdrawal was successful, false other wise. Takes in the
 // fund type you want to withdraw from and the amount.

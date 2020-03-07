@@ -12,10 +12,12 @@ class Funds {
         }
         return os;
     }
-
   private:
     deque<string>* history = new deque<string>;
 
   public:
+  ~Funds() {
+    delete history;
+  }
     deque<string>* getHistory() { return history; }
 };
