@@ -5,7 +5,7 @@
 #include <sstream>
 
 // Takes in a file name as a param and begins processing the transactions.
-Bank::Bank(const string fileName) { processTransactions(fileName); }
+Bank::Bank(const string& fileName) { processTransactions(fileName); }
 // Default constructor.
 Bank::Bank() = default;
 // Default constructor.
@@ -49,9 +49,9 @@ bool Bank::accountExists(Account* acc) {
 
 // Returns true if the account number of the account to be opened does not exist
 // and is opened successfully. Returns false other wise.
-bool Bank::openAccount(string firstName, string lastName, int accNum) {
+bool Bank::openAccount(const string& firstName, const string& lastName, int accNum) {
     // Create a new Account using the account number, first name, and last name.
-    Account* newAcc = new Account(accNum, firstName, lastName);
+    auto* newAcc = new Account(accNum, firstName, lastName);
     // Check if there is an account with same account number.
     if (accountExists(newAcc)) {
         // Delete the allocated memory since the account already exists.
@@ -124,7 +124,7 @@ void Bank::displayAllBankBalances() const {
 }
 
 // Returns true if string was successfully parsed, other wise returns false.
-bool Bank::parseString(string line) {
+bool Bank::parseString(const string& line) {
     // store the line paramaters. Never more than 4 params
     string params[4];
     int i = 0;
@@ -145,7 +145,7 @@ bool Bank::parseString(string line) {
         int accountNumber = stoi(params[3]);
         // We cannot open an account with more than 4 characters.
         if (accountNumber > 9999) {
-            throw "ERROR: Account " + to_string(accountNumber) +
+            cout << "ERROR: Account " + to_string(accountNumber) +
                 " is not within bounds. Transaction refused.";
             return false;
         }
@@ -162,7 +162,7 @@ bool Bank::parseString(string line) {
         // is the target. If it is more than 5 digits, or less than 4 digits it
         // is invalid syntax.
         if (accountNumber > 99999 || accountNumber < 10000) {
-            throw "err";
+            cout << "ERROR: Account number must have a fifth digit for target fund type. Transaction refused.";
             return false;
         }
         //  Mod 10 gives the last digit, which has to be the fundType.
@@ -183,7 +183,7 @@ bool Bank::parseString(string line) {
         int accountNumber = stoi(params[1]);
         // account number can only be 4 or 5 digits, nothing less nothing more.
         if (accountNumber < 1000 && accountNumber > 99999) {
-            throw "err";
+            cout << "ERROR: Account number length is either too short or too long." << endl;
             return false;
         }
 
@@ -210,7 +210,7 @@ bool Bank::parseString(string line) {
         // if we have more than 5 digits on either account number, it is invalid
         // syntax.
         if (accountNumber1 > 99999 || accountNumber2 > 99999) {
-            throw "err";
+            cout << "ERROR: Account number length is either too short or too long." << endl;
             return false;
         }
 

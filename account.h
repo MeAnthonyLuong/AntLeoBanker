@@ -18,7 +18,7 @@ class Account {
   public:
     // Account constructor that takes in a 4 digit account number, first name,
     // and last name.
-    Account(int accNum, const string firstName, const string lastName);
+    Account(int accNum, const string& firstName, const string& lastName);
     // Destructor
     ~Account();
     // withdraws money from a specified fund type.
