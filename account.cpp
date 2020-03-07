@@ -21,7 +21,7 @@ ostream& operator<<(ostream& os, const Account& acc) {
 
 // Account constructor that takes in a 4 digit account number, first name,
 // and last name.
-Account::Account(int accNum, const string firstName, const string lastName)
+Account::Account(int accNum, const string& firstName, const string& lastName)
     : firstName(firstName), lastName(lastName) {
     // the account number is greater than four digits, we will not handle that.
     if (accNum > 9999 || accNum < 1000) {
