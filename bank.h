@@ -29,7 +29,7 @@ class Bank {
     void displayAllBankBalances() const;
 
     // Opens an account.
-    bool openAccount(const string firstName, const string lastName, int accNum);
+    bool openAccount(const string& firstName, const string& lastName, int accNum);
     // Withdraws money from an account.
     bool withdrawAssets(int accNum, int fund, int amt);
     // Transfers money between accounts.
