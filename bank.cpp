@@ -69,7 +69,7 @@ bool Bank::openAccount(const string& firstName, const string& lastName, int accN
 
 // Returns true if money is withdrawn successfully, other wise return false.
 bool Bank::withdrawAssets(int accNum, int fund, int amt) {
-    Account* acc = nu;
+    Account* acc = nullptr;
     accounts.retrieve(accNum, acc);
     if(acc == nullptr) {
         cout << "ERROR: Could not find Account " << accNum << " Withdraw cancelled." << endl;
@@ -162,7 +162,7 @@ bool Bank::parseString(const string& line) {
         // is the target. If it is more than 5 digits, or less than 4 digits it
         // is invalid syntax.
         if (accountNumber > 99999 || accountNumber < 10000) {
-            cout << "ERROR: Account number must have a fifth digit for target fund type. Transaction refused.";
+            cout << "ERROR: Account number must have a fifth digit for target fund type. Transaction refused." << endl;
             return false;
         }
         //  Mod 10 gives the last digit, which has to be the fundType.

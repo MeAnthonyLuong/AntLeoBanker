@@ -1,10 +1,6 @@
-// #include "account.h"
-// #include "accounttree.h"
-// #include "bank.h"
 
-// #include <sstream>
 //
-// Created by <Name> on <Date>.
+// Anthony Luong and Leo Mota-Villaraldo on 03/06/2020
 //
 
 #include "bank.h"
