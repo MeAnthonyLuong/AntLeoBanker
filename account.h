@@ -4,10 +4,10 @@
 
 #pragma once
 
+#include "funds.h"
 #include <deque>
 #include <iostream>
 #include <string>
-#include "funds.h"
 
 using namespace std;
 
