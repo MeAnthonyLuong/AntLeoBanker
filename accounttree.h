@@ -21,7 +21,8 @@ class AccountTree {
 
     // returns true if successful AND *Account points to account
     // The sample comes with the Account*& parameter, and parameters should not
-    // be changed.
+    // be changed. Since retrieve only returns a boolean, the account parameter
+    // cannot be a const reference.
     // NOLINTNEXTLINE(google-runtime-references)
     bool retrieve(const int& accountNumber, Account*& account) const;
 
