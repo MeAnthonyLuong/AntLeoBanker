@@ -41,6 +41,7 @@ bool Account::withdraw(int fundType, int amt) {
     string accountWithFund = to_string(accNum) + to_string(fundType);
     // Special case here, the money markets can rely on each other.
     int totalMoneyMarket = funds[0] + funds[1];
+    int totalBonds = funds[2] + funds[3];
 
     // special case for MoneyMarkets
     if (fundType == 0 && amt <= totalMoneyMarket && amt > funds[0]) {
@@ -55,6 +56,22 @@ bool Account::withdraw(int fundType, int amt) {
     if (fundType == 1 && amt <= totalMoneyMarket && amt > funds[1]) {
         funds[0] -= amt - funds[1];
         funds[1] = 0;
+        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
+                                                  " " + to_string(amt));
+        return true;
+    }
+
+    if (amt > funds[2] && fundType == 2 && amt <= totalBonds) {
+        funds[3] -= amt - funds[2];
+        funds[2] = 0;
+        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
+                                                  " " + to_string(amt));
+        return true;
+    }
+
+    if (amt > funds[3] && fundType == 3 && amt <= totalBonds) {
+        funds[2] -= amt - funds[3];
+        funds[3] = 0;
         history[fundType].getHistory()->push_back("\tW " + accountWithFund +
                                                   " " + to_string(amt));
         return true;
