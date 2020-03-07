@@ -19,9 +19,11 @@ class AccountTree {
     // Insert new account
     bool insert(Account* acc);
 
-    // Retrieve account
     // returns true if successful AND *Account points to account
-    bool retrieve(const int& accountNumber, const Account*& account) const;
+    // The sample comes with the Account*& parameter, and parameters should not
+    // be changed.
+    // NOLINTNEXTLINE(google-runtime-references)
+    bool retrieve(const int& accountNumber, Account*& account) const;
 
     // Display information on all accounts
     void display() const;

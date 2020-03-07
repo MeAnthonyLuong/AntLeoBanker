@@ -69,7 +69,7 @@ bool Bank::openAccount(const string& firstName, const string& lastName, int accN
 
 // Returns true if money is withdrawn successfully, other wise return false.
 bool Bank::withdrawAssets(int accNum, int fund, int amt) {
-    Account* acc;
+    Account* acc = nu;
     accounts.retrieve(accNum, acc);
     if(acc == nullptr) {
         cout << "ERROR: Could not find Account " << accNum << " Withdraw cancelled." << endl;
@@ -82,9 +82,9 @@ bool Bank::withdrawAssets(int accNum, int fund, int amt) {
 // false.
 bool Bank::transferAssets(int accNum1, int transferAmount, int fundType1,
                           int fundType2, int accNum2) {
-    Account* acc;
+    Account* acc = nullptr;
     accounts.retrieve(accNum1, acc);
-    Account* acc2;
+    Account* acc2 = nullptr;
     accounts.retrieve(accNum2, acc2);
     if(acc == nullptr || acc2 == nullptr) {
         cout << "ERROR: Could not find Account " << (acc == nullptr ? accNum1 : accNum2) << " Transfer cancelled." << endl;
@@ -95,7 +95,7 @@ bool Bank::transferAssets(int accNum1, int transferAmount, int fundType1,
 
 // Returns true if depositing was successful, otherwise false.
 bool Bank::depositAssets(int accNum, int fund, int amt) {
-    Account* acc;
+    Account* acc = nullptr;
     accounts.retrieve(accNum, acc);
     if (acc == nullptr) {
         cout << "ERROR: Could not find Account " << accNum
@@ -107,7 +107,7 @@ bool Bank::depositAssets(int accNum, int fund, int amt) {
 
 // Displays all the history of the given account number.
 void Bank::historyTransaction(int accNum, int fundType) {
-    Account* acc;
+    Account* acc = nullptr;
     accounts.retrieve(accNum, acc);
     if (acc == nullptr) {
         cout << "ERROR: Could not find Account " << accNum
@@ -182,7 +182,7 @@ bool Bank::parseString(const string& line) {
         // params = [operation, accountNumber]
         int accountNumber = stoi(params[1]);
         // account number can only be 4 or 5 digits, nothing less nothing more.
-        if (accountNumber < 1000 && accountNumber > 99999) {
+        if (accountNumber < 1000 || accountNumber > 99999) {
             cout << "ERROR: Account number length is either too short or too long." << endl;
             return false;
         }
