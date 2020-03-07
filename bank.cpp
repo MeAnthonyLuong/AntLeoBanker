@@ -5,9 +5,9 @@
 #include <sstream>
 
 // Takes in a file name as a param and begins processing the transactions.
-Bank::Bank(string fileName) { processTransactions(fileName); }
+Bank::Bank(const string fileName) { processTransactions(fileName); }
 // Default constructor.
-Bank::Bank() {}
+Bank::Bank() = default;
 // Default constructor.
 Bank::~Bank() = default;
 
@@ -15,7 +15,7 @@ Bank::~Bank() = default;
 void Bank::processTransactions(const string& fileName) {
     ifstream inStream;
     inStream.open(fileName);
-    string readLine = "";
+    string readLine;
     if (!inStream) {
         cout << "ERROR: No File Found Matching :" << fileName;
         return;
@@ -24,7 +24,7 @@ void Bank::processTransactions(const string& fileName) {
     while (!inStream.eof()) {
         getline(inStream, readLine);
         // occurs when we've reached the end of the txt file
-        if (readLine == "") {
+        if (readLine.empty()) {
             break;
         }
         transaction.push(readLine);

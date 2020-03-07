@@ -21,7 +21,7 @@ class AccountTree {
 
     // Retrieve account
     // returns true if successful AND *Account points to account
-    bool retrieve(const int& accountNumber, Account*& account) const;
+    bool retrieve(const int& accountNumber, const Account*& account) const;
 
     // Display information on all accounts
     void display() const;

@@ -24,11 +24,11 @@ clang-tidy --version
 clang-tidy *.cpp -- -std=c++14
 
 echo "*** running myprogram"
-./myprogram
+./myprogram BankTransIn.txt
 
 # valgrind will detect memory leaks
 # echo "*** running with valgrind"
-valgrind ./myprogram
+valgrind ./myprogram BankTransIn.txt
 
 echo "*** cleaning up, deleting myprogram"
 rm myprogram
