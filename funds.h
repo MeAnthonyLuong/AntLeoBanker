@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 class Funds {
-    friend ostream& operator<<(ostream& os, Funds& funds) {
+    friend ostream& operator<<(ostream& os, const Funds& funds) {
         for (auto it = funds.history->begin(); it != funds.history->end();
              it++) {
             if (it == funds.history->end() - 1) {

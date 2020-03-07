@@ -13,7 +13,7 @@ ostream& operator<<(ostream& os, const Account& acc) {
        << endl;
 
     for (int fundType = 0; fundType < 10; fundType++) {
-        os << "\t" << acc.fundsName[fundType] << ": $" << acc.funds[fundType]
+        os << "\t" << acc.fundNames[fundType] << ": $" << acc.funds[fundType]
            << endl;
     }
     return os;
@@ -21,11 +21,11 @@ ostream& operator<<(ostream& os, const Account& acc) {
 
 // Account constructor that takes in a 4 digit account number, first name,
 // and last name.
-Account::Account(int accNum, string firstName, string lastName)
+Account::Account(int accNum, const string firstName, const string lastName)
     : firstName(firstName), lastName(lastName) {
     // the account number is greater than four digits, we will not handle that.
-    if (accNum > 9999) {
-        throw "err";
+    if (accNum > 9999 || accNum < 1000) {
+        cout << "ERROR: Accounnt number is not 4 digits." << endl;
     } else {
         this->accNum = accNum;
     }
