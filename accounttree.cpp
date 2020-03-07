@@ -67,9 +67,10 @@ Account* AccountTree::getAccount(const int& accNum, Node* curr) const {
 
     if (accNum < curr->getNodeAccount()->getAccountNumber()) {
         return getAccount(accNum, curr->getLeft());
-    } else {
-        return getAccount(accNum, curr->getRight());
     }
+    
+    return getAccount(accNum, curr->getRight());
+    
 }
 
 // Returns a node pointer to the right node.

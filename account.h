@@ -34,7 +34,7 @@ class Account {
 
   private:
     // private variable of all fund types
-    const string FUNDS[10] = {"Money Market",       "Prime Money Market",
+    const string fundNames[10] = {"Money Market",       "Prime Money Market",
                               "Long-Term Bond",     "Short-Term Bond",
                               "500 Index Fund",     "Capital Value Fund",
                               "Growth Equity Fund", "Growth Index Fund",

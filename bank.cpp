@@ -60,7 +60,10 @@ bool Bank::openAccount(string firstName, string lastName, int accNum) {
              << " is already open. Transaction refused." << endl;
         return false;
     }
-    accounts.insert(newAcc);
+    if(!accounts.insert(newAcc)) {
+        delete newAcc;
+        return false;
+    }
     return true;
 }
 
@@ -149,7 +152,8 @@ bool Bank::parseString(string line) {
         return openAccount(firstName, lastName, accountNumber);
         // W and D have the same params, the only difference is function
         // calling.
-    } else if (operation == "W" || operation == "D") {
+    }
+    if (operation == "W" || operation == "D") {
         // params = [Operation, accountNumber, amount]
         int accountNumber = stoi(params[1]); // add try catch later
         int moneyValue = stoi(params[2]);    // add try catch later
@@ -173,7 +177,8 @@ bool Bank::parseString(string line) {
 
         // If it wasn't withdraw it has to be deposit.
         return depositAssets(accountNumber, fundType, moneyValue);
-    } else if (operation == "H") {
+    }
+    if (operation == "H") {
         // params = [operation, accountNumber]
         int accountNumber = stoi(params[1]);
         // account number can only be 4 or 5 digits, nothing less nothing more.
@@ -195,7 +200,8 @@ bool Bank::parseString(string line) {
 
         historyTransaction(accountNumber, fundType);
         return true;
-    } else if (operation == "T") {
+    }
+    if (operation == "T") {
         // params = [operation, accountNumber1, amount, accountNumber2]
         int accountNumber1 = stoi(params[1]);
         int accountNumber2 = stoi(params[3]);

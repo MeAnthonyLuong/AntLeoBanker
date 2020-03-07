@@ -17,7 +17,7 @@ class AccountTree {
     ~AccountTree();
 
     // Insert new account
-    bool insert(Account* account);
+    bool insert(Account* acc);
 
     // Retrieve account
     // returns true if successful AND *Account points to account
@@ -65,5 +65,5 @@ class AccountTree {
     Account* getAccount(const int& accNum, Node* curr) const;
 
     // Recursively frees up memory used up the AccountTree.
-    void recursiveRemove(Node* current);
+    void recursiveRemove(Node* curr);
 };

@@ -14,7 +14,7 @@ using namespace std;
 class Bank {
   public:
     // Constructor with input file.
-    Bank(string inputFile);
+    explicit Bank(string fileName);
     // Default constructor
     Bank();
     // Destructor
@@ -36,7 +36,7 @@ class Bank {
     bool transferAssets(int accNum1, int transferAmount, int fundType1,
                         int fundType2, int accNum2);
     // Deposits money into an account.
-    bool depositAssets(int accNum, int amt, int fund);
+    bool depositAssets(int accNum, int fund, int amt);
     // Displays history of an account.
     void historyTransaction(int accNum, int fundType = -1);
 

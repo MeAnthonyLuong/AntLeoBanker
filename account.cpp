@@ -13,7 +13,7 @@ ostream& operator<<(ostream& os, const Account& acc) {
        << endl;
 
     for (int fundType = 0; fundType < 10; fundType++) {
-        os << "\t" << acc.FUNDS[fundType] << ": $" << acc.funds[fundType]
+        os << "\t" << acc.fundsName[fundType] << ": $" << acc.funds[fundType]
            << endl;
     }
     return os;
@@ -149,7 +149,7 @@ void Account::getHistory(int fundType) {
         cout << "Displaying Transaction History for " << accountName
              << " by fund." << endl;
         for (int i = 0; i < MAX_ACC; i++) {
-            cout << FUNDS[i] << ": $" << funds[i] << endl;
+            cout << fundNames[i] << ": $" << funds[i] << endl;
             if (history[i].getHistory()->empty()) {
                 cout << history[i];
             } else {
@@ -158,7 +158,7 @@ void Account::getHistory(int fundType) {
         }
     } else {
         cout << "Displaying Transaction History for " << accountName << "'s "
-             << FUNDS[fundType] << ": $" << funds[fundType] << endl;
+             << fundNames[fundType] << ": $" << funds[fundType] << endl;
         cout << history[fundType] << endl;
     }
 }
