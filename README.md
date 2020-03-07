@@ -1,6 +1,9 @@
 # The Jolly Banker
 
-<TBD: Fill details about implementation>
+The Jolly Banker uses queues and binary search trees
+to simulate a banking application. The program reads in a string of transactions from a file into an in-memory queue. It processes transactions of the following: Opening Accounts, Depositing Funds, Withdrawing Funds, Transfering Funds, and Displaying Transaction History. It is then read from the queue and processes the transactions in order. Once the queue has depleted, the program will print out all of the opened accounts and total balances in those accounts.
+
+---
 
 ## Compile and Run
 
