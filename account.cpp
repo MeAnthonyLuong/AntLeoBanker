@@ -41,7 +41,7 @@ bool Account::withdraw(int fundType, int amt) {
     string accountWithFund = to_string(accNum) + to_string(fundType);
     // Special case here, the money markets can rely on each other.
     int totalMoneyMarket = funds[0] + funds[1];
-    int totalBonds = fund[2] + funds[3];
+    int totalBonds = funds[2] + funds[3];
 
     // special case for MoneyMarkets
     if (fundType == 0 && amt <= totalMoneyMarket && amt > funds[0]) {
