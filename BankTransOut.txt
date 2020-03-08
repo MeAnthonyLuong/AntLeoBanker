@@ -23,7 +23,7 @@ Growth Index Fund: $10931
         D 10017 5442
         D 10017 6543
         W 10017 1000
-        T 10017 5410015
+        T 10017 54 10015
         W 10017 20000 (Failed)
 Value Fund: $0
 Value Stock Index: $0
@@ -36,7 +36,7 @@ Prime Money Market: $10000
         D 12531 10000
 Long-Term Bond: $0
         D 12532 10000
-        W 12532 15000
+        W 12532 10000
 Short-Term Bond: $5000
         D 12533 10000
         W 12533 5000

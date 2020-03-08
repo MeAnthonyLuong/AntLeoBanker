@@ -1,0 +1,48 @@
+Abraham Lincoln Account ID: 1861
+	Money Market: $0
+	Prime Money Market: $0
+	Long-Term Bond: $0
+	Short-Term Bond: $0
+	500 Index Fund: $0
+	Capital Value Fund: $0
+	Growth Equity Fund: $0
+	Growth Index Fund: $0
+	Value Fund: $0
+	Value Stock Index: $0
+
+Franklin Roosevelt Account ID: 1933
+	Money Market: $10000
+	Prime Money Market: $11000
+	Long-Term Bond: $12000
+	Short-Term Bond: $13000
+	500 Index Fund: $14000
+	Capital Value Fund: $15000
+	Growth Equity Fund: $16000
+	Growth Index Fund: $17000
+	Value Fund: $18000
+	Value Stock Index: $19000
+
+Richard Nixon Account ID: 1972
+	Money Market: $0
+	Prime Money Market: $0
+	Long-Term Bond: $0
+	Short-Term Bond: $0
+	500 Index Fund: $0
+	Capital Value Fund: $0
+	Growth Equity Fund: $0
+	Growth Index Fund: $0
+	Value Fund: $0
+	Value Stock Index: $0
+
+Ronald Reagan Account ID: 1981
+	Money Market: $0
+	Prime Money Market: $0
+	Long-Term Bond: $0
+	Short-Term Bond: $114000
+	500 Index Fund: $0
+	Capital Value Fund: $0
+	Growth Equity Fund: $0
+	Growth Index Fund: $0
+	Value Fund: $0
+	Value Stock Index: $0
+

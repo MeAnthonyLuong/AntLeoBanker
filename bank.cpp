@@ -43,8 +43,6 @@ void Bank::processTransactions(const string& fileName) {
         // Remove the line from the queue.
         transaction.pop();
     }
-
-    displayAllBankBalances();
 }
 
 // Returns true if acc exists within the AccountTree of this bank.
