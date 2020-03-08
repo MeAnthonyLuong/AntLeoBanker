@@ -4,12 +4,37 @@
 
 #include "accounttree.h"
 #include <iostream>
+#include <stack>
 
 // Default constructor.
 AccountTree::AccountTree() { root = nullptr; }
 
 // Delete all nodes in BST by calling clear.
 AccountTree::~AccountTree() { clear(); }
+
+ostream& operator<<(ostream& os, const AccountTree& accTree) {
+    stack<AccountTree::Node*> st;
+    auto* curr = accTree.root;
+    // traverse in order
+    while (curr != nullptr || !st.empty()) {
+        while (curr != nullptr) {
+            // push the current node to stack
+            st.push(curr);
+            // and keep going left.
+            curr = curr->getLeft();
+        }
+        // reached null, so lets go back one
+        curr = st.top();
+        // and pop off the stack.
+        st.pop();
+
+        os << *curr->getNodeAccount() << endl;
+
+        curr = curr->getRight();
+    }
+
+    return os;
+}
 
 // Inserts a new account into the AccountTree.
 bool AccountTree::insert(Account* acc) {
@@ -68,9 +93,8 @@ Account* AccountTree::getAccount(const int& accNum, Node* curr) const {
     if (accNum < curr->getNodeAccount()->getAccountNumber()) {
         return getAccount(accNum, curr->getLeft());
     }
-    
+
     return getAccount(accNum, curr->getRight());
-    
 }
 
 // Returns a node pointer to the right node.

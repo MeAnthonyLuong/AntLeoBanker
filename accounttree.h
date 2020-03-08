@@ -8,6 +8,7 @@
 #include <iostream>
 
 class AccountTree {
+    friend ostream& operator<<(ostream& os, const AccountTree& accTree);
 
   public:
     // Create BST
