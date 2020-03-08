@@ -1,5 +1,5 @@
 //
-// Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
+// Anthony Luong and Leonardo Mota-Villaraldo on 03/03/2020
 //
 
 #pragma once
@@ -35,10 +35,10 @@ class Account {
   private:
     // private variable of all fund types
     const string fundNames[10] = {"Money Market",       "Prime Money Market",
-                              "Long-Term Bond",     "Short-Term Bond",
-                              "500 Index Fund",     "Capital Value Fund",
-                              "Growth Equity Fund", "Growth Index Fund",
-                              "Value Fund",         "Value Stock Index"};
+                                  "Long-Term Bond",     "Short-Term Bond",
+                                  "500 Index Fund",     "Capital Value Fund",
+                                  "Growth Equity Fund", "Growth Index Fund",
+                                  "Value Fund",         "Value Stock Index"};
     // Double ended queue containing history log of transactions.
     Funds history[10];
     // Max amount of fund types allowed.
