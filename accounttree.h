@@ -1,5 +1,5 @@
 //
-// Anthony Luong and Leo Mota-Villaraldo on 03/03/2020
+// Anthony Luong and Leonardo Mota-Villaraldo on 03/03/2020
 //
 
 #pragma once

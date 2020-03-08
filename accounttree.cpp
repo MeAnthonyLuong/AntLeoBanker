@@ -1,5 +1,5 @@
 //
-// Created by <Name> on <Date>.
+// Created by Leonardo Mota-Villaraldo and Anthony Luong on 03/03/2020.
 //
 
 #include "accounttree.h"
