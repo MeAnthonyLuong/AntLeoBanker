@@ -1,4 +1,4 @@
-Sun Mar  8 14:51:40 PDT 2020
+Mon Mar  9 15:54:42 PDT 2020
 *** compiling with clang++ to create an executable called myprogram
 clang version 6.0.0-1ubuntu2 (tags/RELEASE_600/final)
 Target: x86_64-pc-linux-gnu
@@ -7,493 +7,221 @@ InstalledDir: /usr/bin
 *** running clang-tidy using options from .clang-tidy
 LLVM (http://llvm.org/):
   LLVM version 6.0.0
-  
+
   Optimized build.
   Default target: x86_64-pc-linux-gnu
   Host CPU: skylake
 11874 warnings generated.
 23987 warnings generated.
-38472 warnings generated.
-52942 warnings generated.
-/mnt/c/Users/leonardo/Desktop/CSS342/AntLeoBanker/bank.cpp:5:1: warning: #includes are not sorted properly [llvm-include-order]
-#include <sstream>
-^        ~~~~~~~~~
-         <queue>
-Suppressed 52944 warnings (52941 in non-user code, 3 NOLINT).
+38471 warnings generated.
+52462 warnings generated.
+Suppressed 52465 warnings (52462 in non-user code, 3 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-*** running myprogram
+*** running myprogram for BankTransIn.txt
 The command line argument(s) was BankTransIn.txt
 Displaying Transaction History for Cash Johnny by fund.
 Money Market: $470
-	D 10010 542
-	W 10010 72
+        D 10010 542
+        W 10010 72
 Prime Money Market: $3042
-	D 10011 1542
-	D 10011 1500
+        D 10011 1542
+        D 10011 1500
 Long-Term Bond: $10442
-	D 10012 5442
-	D 10012 5000
+        D 10012 5442
+        D 10012 5000
 Short-Term Bond: $14540
-	D 10013 7540
-	D 10013 7000
+        D 10013 7540
+        D 10013 7000
 500 Index Fund: $0
 Capital Value Fund: $54
-	D 10015 54
+        D 10015 54
 Growth Equity Fund: $15053
-	D 10016 7542
-	D 10016 7576
-	W 10016 65
+        D 10016 7542
+        D 10016 7576
+        W 10016 65
 Growth Index Fund: $10931
-	D 10017 5442
-	D 10017 6543
-	W 10017 1000
-	T 10017 54 10015
-	W 10017 20000 (Failed)
+        D 10017 5442
+        D 10017 6543
+        W 10017 1000
+        T 10017 54 10015
+        W 10017 20000 (Failed)
 Value Fund: $0
 Value Stock Index: $0
 Displaying Transaction History for Williams Hank's 500 Index Fund: $10000
-	D 12534 10000
+        D 12534 10000
 Displaying Transaction History for Williams Hank by fund.
 Money Market: $10000
-	D 12530 10000
+        D 12530 10000
 Prime Money Market: $10000
-	D 12531 10000
+        D 12531 10000
 Long-Term Bond: $0
-	D 12532 10000
-	W 12532 10000
+        D 12532 10000
+        W 12532 10000
 Short-Term Bond: $5000
-	D 12533 10000
-	W 12533 5000
+        D 12533 10000
+        W 12533 5000
 500 Index Fund: $10000
-	D 12534 10000
+        D 12534 10000
 Capital Value Fund: $10000
-	D 12535 10000
+        D 12535 10000
 Growth Equity Fund: $10000
-	D 12536 10000
+        D 12536 10000
 Growth Index Fund: $10000
-	D 12537 10000
+        D 12537 10000
 Value Fund: $10000
-	D 12538 10000
+        D 12538 10000
 Value Stock Index: $10000
-	D 12539 10000
+        D 12539 10000
 ERROR: Could not find Account 4356 Transfer cancelled.
 ERROR: Account 9876 is already open. Transaction refused.
+
+Processing Done. Final Balances.
+Cash Johnny Account ID: 1001
+        Money Market: $470
+        Prime Money Market: $3042
+        Long-Term Bond: $10442
+        Short-Term Bond: $14540
+        500 Index Fund: $0
+        Capital Value Fund: $54
+        Growth Equity Fund: $15053
+        Growth Index Fund: $10931
+        Value Fund: $0
+        Value Stock Index: $0
+
+Williams Hank Account ID: 1253
+        Money Market: $10000
+        Prime Money Market: $10000
+        Long-Term Bond: $0
+        Short-Term Bond: $5000
+        500 Index Fund: $10000
+        Capital Value Fund: $10000
+        Growth Equity Fund: $10000
+        Growth Index Fund: $10000
+        Value Fund: $10000
+        Value Stock Index: $10000
+
+Nelson Willie Account ID: 9876
+        Money Market: $0
+        Prime Money Market: $0
+        Long-Term Bond: $0
+        Short-Term Bond: $0
+        500 Index Fund: $0
+        Capital Value Fund: $0
+        Growth Equity Fund: $0
+        Growth Index Fund: $0
+        Value Fund: $0
+        Value Stock Index: $0
+
 Done
-
-Now running tests
-Displaying Transaction History for Cash Johnny by fund.
-Money Market: $470
-	D 10010 542
-	W 10010 72
-Prime Money Market: $3042
-	D 10011 1542
-	D 10011 1500
-Long-Term Bond: $10442
-	D 10012 5442
-	D 10012 5000
-Short-Term Bond: $14540
-	D 10013 7540
-	D 10013 7000
-500 Index Fund: $0
-Capital Value Fund: $54
-	D 10015 54
-Growth Equity Fund: $15053
-	D 10016 7542
-	D 10016 7576
-	W 10016 65
-Growth Index Fund: $10931
-	D 10017 5442
-	D 10017 6543
-	W 10017 1000
-	T 10017 54 10015
-	W 10017 20000 (Failed)
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Williams Hank's 500 Index Fund: $10000
-	D 12534 10000
-Displaying Transaction History for Williams Hank by fund.
-Money Market: $10000
-	D 12530 10000
-Prime Money Market: $10000
-	D 12531 10000
-Long-Term Bond: $0
-	D 12532 10000
-	W 12532 10000
-Short-Term Bond: $5000
-	D 12533 10000
-	W 12533 5000
-500 Index Fund: $10000
-	D 12534 10000
-Capital Value Fund: $10000
-	D 12535 10000
-Growth Equity Fund: $10000
-	D 12536 10000
-Growth Index Fund: $10000
-	D 12537 10000
-Value Fund: $10000
-	D 12538 10000
-Value Stock Index: $10000
-	D 12539 10000
-ERROR: Could not find Account 4356 Transfer cancelled.
-ERROR: Account 9876 is already open. Transaction refused.
-Displaying Transaction History for Ronald Reagan by fund.
-Money Market: $0
-	D 19810 12000
-	W 19810 27000
-Prime Money Market: $0
-	D 19811 15000
-Long-Term Bond: $0
-	D 19812 10000
-Short-Term Bond: $42000
-	D 19813 5000
-	W 19813 15000
-	D 19813 42000
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Abraham Lincoln by fund.
-Money Market: $0
-	D 18610 3000
-Prime Money Market: $0
-	D 18611 7000
-	W 18611 10000
-Long-Term Bond: $0
-	D 18612 12000
-	W 18612 30000
-Short-Term Bond: $0
-	D 18613 90000
-	T 18613 72000 19813
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Ronald Reagan's Short-Term Bond: $114000
-	D 19813 5000
-	W 19813 15000
-	D 19813 42000
-	D 19813 72000
-ERROR: Could not find Account 1989 Transfer cancelled.
-Displaying Transaction History for Richard Nixon by fund.
-Money Market: $0
-	D 19720 2000000
-	T 19720 200000 19721
-	D 19720 100000
-	T 19720 100000 19720
-	W 19720 1900000
-Prime Money Market: $0
-	D 19721 200000
-	T 19721 150000 19722
-	W 19721 50000
-Long-Term Bond: $0
-	D 19722 900000
-	D 19722 150000
-	T 19722 100000 19720
-	W 19722 950000
-Short-Term Bond: $0
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-ERROR: Account 1972 is already open. Transaction refused.
-ERROR: Could not find Account 1897 Withdraw cancelled.
-Abraham Lincoln Account ID: 1861
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $0
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-Franklin Roosevelt Account ID: 1933
-	Money Market: $10000
-	Prime Money Market: $11000
-	Long-Term Bond: $12000
-	Short-Term Bond: $13000
-	500 Index Fund: $14000
-	Capital Value Fund: $15000
-	Growth Equity Fund: $16000
-	Growth Index Fund: $17000
-	Value Fund: $18000
-	Value Stock Index: $19000
-
-Richard Nixon Account ID: 1972
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $0
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-Ronald Reagan Account ID: 1981
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $114000
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-==1106== Memcheck, a memory error detector
-==1106== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==1106== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==1106== Command: ./myprogram BankTransIn.txt
-==1106== 
-==1106== error calling PR_SET_PTRACER, vgdb might block
+==1457== Memcheck, a memory error detector
+==1457== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1457== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==1457== Command: ./myprogram BankTransIn.txt
+==1457==
+==1457== error calling PR_SET_PTRACER, vgdb might block
 The command line argument(s) was BankTransIn.txt
 Displaying Transaction History for Cash Johnny by fund.
 Money Market: $470
-	D 10010 542
-	W 10010 72
+        D 10010 542
+        W 10010 72
 Prime Money Market: $3042
-	D 10011 1542
-	D 10011 1500
+        D 10011 1542
+        D 10011 1500
 Long-Term Bond: $10442
-	D 10012 5442
-	D 10012 5000
+        D 10012 5442
+        D 10012 5000
 Short-Term Bond: $14540
-	D 10013 7540
-	D 10013 7000
+        D 10013 7540
+        D 10013 7000
 500 Index Fund: $0
 Capital Value Fund: $54
-	D 10015 54
+        D 10015 54
 Growth Equity Fund: $15053
-	D 10016 7542
-	D 10016 7576
-	W 10016 65
+        D 10016 7542
+        D 10016 7576
+        W 10016 65
 Growth Index Fund: $10931
-	D 10017 5442
-	D 10017 6543
-	W 10017 1000
-	T 10017 54 10015
-	W 10017 20000 (Failed)
+        D 10017 5442
+        D 10017 6543
+        W 10017 1000
+        T 10017 54 10015
+        W 10017 20000 (Failed)
 Value Fund: $0
 Value Stock Index: $0
 Displaying Transaction History for Williams Hank's 500 Index Fund: $10000
-	D 12534 10000
+        D 12534 10000
 Displaying Transaction History for Williams Hank by fund.
 Money Market: $10000
-	D 12530 10000
+        D 12530 10000
 Prime Money Market: $10000
-	D 12531 10000
+        D 12531 10000
 Long-Term Bond: $0
-	D 12532 10000
-	W 12532 10000
+        D 12532 10000
+        W 12532 10000
 Short-Term Bond: $5000
-	D 12533 10000
-	W 12533 5000
+        D 12533 10000
+        W 12533 5000
 500 Index Fund: $10000
-	D 12534 10000
+        D 12534 10000
 Capital Value Fund: $10000
-	D 12535 10000
+        D 12535 10000
 Growth Equity Fund: $10000
-	D 12536 10000
+        D 12536 10000
 Growth Index Fund: $10000
-	D 12537 10000
+        D 12537 10000
 Value Fund: $10000
-	D 12538 10000
+        D 12538 10000
 Value Stock Index: $10000
-	D 12539 10000
+        D 12539 10000
 ERROR: Could not find Account 4356 Transfer cancelled.
 ERROR: Account 9876 is already open. Transaction refused.
+
+Processing Done. Final Balances.
+Cash Johnny Account ID: 1001
+        Money Market: $470
+        Prime Money Market: $3042
+        Long-Term Bond: $10442
+        Short-Term Bond: $14540
+        500 Index Fund: $0
+        Capital Value Fund: $54
+        Growth Equity Fund: $15053
+        Growth Index Fund: $10931
+        Value Fund: $0
+        Value Stock Index: $0
+
+Williams Hank Account ID: 1253
+        Money Market: $10000
+        Prime Money Market: $10000
+        Long-Term Bond: $0
+        Short-Term Bond: $5000
+        500 Index Fund: $10000
+        Capital Value Fund: $10000
+        Growth Equity Fund: $10000
+        Growth Index Fund: $10000
+        Value Fund: $10000
+        Value Stock Index: $10000
+
+Nelson Willie Account ID: 9876
+        Money Market: $0
+        Prime Money Market: $0
+        Long-Term Bond: $0
+        Short-Term Bond: $0
+        500 Index Fund: $0
+        Capital Value Fund: $0
+        Growth Equity Fund: $0
+        Growth Index Fund: $0
+        Value Fund: $0
+        Value Stock Index: $0
+
 Done
-
-Now running tests
-Displaying Transaction History for Cash Johnny by fund.
-Money Market: $470
-	D 10010 542
-	W 10010 72
-Prime Money Market: $3042
-	D 10011 1542
-	D 10011 1500
-Long-Term Bond: $10442
-	D 10012 5442
-	D 10012 5000
-Short-Term Bond: $14540
-	D 10013 7540
-	D 10013 7000
-500 Index Fund: $0
-Capital Value Fund: $54
-	D 10015 54
-Growth Equity Fund: $15053
-	D 10016 7542
-	D 10016 7576
-	W 10016 65
-Growth Index Fund: $10931
-	D 10017 5442
-	D 10017 6543
-	W 10017 1000
-	T 10017 54 10015
-	W 10017 20000 (Failed)
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Williams Hank's 500 Index Fund: $10000
-	D 12534 10000
-Displaying Transaction History for Williams Hank by fund.
-Money Market: $10000
-	D 12530 10000
-Prime Money Market: $10000
-	D 12531 10000
-Long-Term Bond: $0
-	D 12532 10000
-	W 12532 10000
-Short-Term Bond: $5000
-	D 12533 10000
-	W 12533 5000
-500 Index Fund: $10000
-	D 12534 10000
-Capital Value Fund: $10000
-	D 12535 10000
-Growth Equity Fund: $10000
-	D 12536 10000
-Growth Index Fund: $10000
-	D 12537 10000
-Value Fund: $10000
-	D 12538 10000
-Value Stock Index: $10000
-	D 12539 10000
-ERROR: Could not find Account 4356 Transfer cancelled.
-ERROR: Account 9876 is already open. Transaction refused.
-Displaying Transaction History for Ronald Reagan by fund.
-Money Market: $0
-	D 19810 12000
-	W 19810 27000
-Prime Money Market: $0
-	D 19811 15000
-Long-Term Bond: $0
-	D 19812 10000
-Short-Term Bond: $42000
-	D 19813 5000
-	W 19813 15000
-	D 19813 42000
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Abraham Lincoln by fund.
-Money Market: $0
-	D 18610 3000
-Prime Money Market: $0
-	D 18611 7000
-	W 18611 10000
-Long-Term Bond: $0
-	D 18612 12000
-	W 18612 30000
-Short-Term Bond: $0
-	D 18613 90000
-	T 18613 72000 19813
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-Displaying Transaction History for Ronald Reagan's Short-Term Bond: $114000
-	D 19813 5000
-	W 19813 15000
-	D 19813 42000
-	D 19813 72000
-ERROR: Could not find Account 1989 Transfer cancelled.
-Displaying Transaction History for Richard Nixon by fund.
-Money Market: $0
-	D 19720 2000000
-	T 19720 200000 19721
-	D 19720 100000
-	T 19720 100000 19720
-	W 19720 1900000
-Prime Money Market: $0
-	D 19721 200000
-	T 19721 150000 19722
-	W 19721 50000
-Long-Term Bond: $0
-	D 19722 900000
-	D 19722 150000
-	T 19722 100000 19720
-	W 19722 950000
-Short-Term Bond: $0
-500 Index Fund: $0
-Capital Value Fund: $0
-Growth Equity Fund: $0
-Growth Index Fund: $0
-Value Fund: $0
-Value Stock Index: $0
-ERROR: Account 1972 is already open. Transaction refused.
-ERROR: Could not find Account 1897 Withdraw cancelled.
-Abraham Lincoln Account ID: 1861
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $0
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-Franklin Roosevelt Account ID: 1933
-	Money Market: $10000
-	Prime Money Market: $11000
-	Long-Term Bond: $12000
-	Short-Term Bond: $13000
-	500 Index Fund: $14000
-	Capital Value Fund: $15000
-	Growth Equity Fund: $16000
-	Growth Index Fund: $17000
-	Value Fund: $18000
-	Value Stock Index: $19000
-
-Richard Nixon Account ID: 1972
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $0
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-Ronald Reagan Account ID: 1981
-	Money Market: $0
-	Prime Money Market: $0
-	Long-Term Bond: $0
-	Short-Term Bond: $114000
-	500 Index Fund: $0
-	Capital Value Fund: $0
-	Growth Equity Fund: $0
-	Growth Index Fund: $0
-	Value Fund: $0
-	Value Stock Index: $0
-
-==1106== 
-==1106== HEAP SUMMARY:
-==1106==     in use at exit: 0 bytes in 0 blocks
-==1106==   total heap usage: 738 allocs, 738 frees, 233,993 bytes allocated
-==1106== 
-==1106== All heap blocks were freed -- no leaks are possible
-==1106== 
-==1106== For counts of detected and suppressed errors, rerun with: -v
-==1106== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1457==
+==1457== HEAP SUMMARY:
+==1457==     in use at exit: 0 bytes in 0 blocks
+==1457==   total heap usage: 170 allocs, 170 frees, 112,613 bytes allocated
+==1457==
+==1457== All heap blocks were freed -- no leaks are possible
+==1457==
+==1457== For counts of detected and suppressed errors, rerun with: -v
+==1457== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 *** cleaning up, deleting myprogram
-Sun Mar  8 14:52:27 PDT 2020
+Mon Mar  9 15:55:03 PDT 2020
