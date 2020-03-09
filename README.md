@@ -17,7 +17,8 @@ to simulate a banking application. The program reads in a string of transactions
 ```
 ./simplecompile.sh BankTransIn.txt BankTransIn2.txt
 ```
-### Style Explanation
+---
+## Style Explanation
 These options are defined in `.clang-tidy` file.
 
 Perform all check except the following:
