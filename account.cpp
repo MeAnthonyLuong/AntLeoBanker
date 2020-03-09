@@ -45,36 +45,24 @@ bool Account::withdraw(int fundType, int amt) {
 
     // special case for MoneyMarkets
     if (fundType == 0 && amt <= totalMoneyMarket && amt > funds[0]) {
-        funds[1] -= amt - funds[0];
-        funds[0] = 0;
-        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
-                                                  " " + to_string(amt));
-        return true;
+        transfer(this, 1, 0, amt - funds[0]);
+        return withdraw(fundType, amt);
     }
 
     // special case for MoneyMarkets
     if (fundType == 1 && amt <= totalMoneyMarket && amt > funds[1]) {
-        funds[0] -= amt - funds[1];
-        funds[1] = 0;
-        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
-                                                  " " + to_string(amt));
-        return true;
+        transfer(this, 0, 1, amt - funds[1]);
+        return withdraw(fundType, amt);
     }
 
     if (amt > funds[2] && fundType == 2 && amt <= totalBonds) {
-        funds[3] -= amt - funds[2];
-        funds[2] = 0;
-        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
-                                                  " " + to_string(amt));
-        return true;
+        transfer(this, 3, 2, amt - funds[2]);
+        return withdraw(fundType, amt);
     }
 
     if (amt > funds[3] && fundType == 3 && amt <= totalBonds) {
-        funds[2] -= amt - funds[3];
-        funds[3] = 0;
-        history[fundType].getHistory()->push_back("\tW " + accountWithFund +
-                                                  " " + to_string(amt));
-        return true;
+        transfer(this, 2, 3, amt - funds[3]);
+        return withdraw(fundType, amt);
     }
 
     // default failed withdraw
