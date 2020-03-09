@@ -23,12 +23,14 @@ echo "*** running clang-tidy using options from .clang-tidy"
 clang-tidy --version
 clang-tidy *.cpp -- -std=c++14
 
-echo "*** running myprogram"
-./myprogram BankTransIn.txt
-
-# valgrind will detect memory leaks
-# echo "*** running with valgrind"
-valgrind ./myprogram BankTransIn.txt
+for((i=1; i<=$#;i++));
+do
+  echo "*** running myprogram for: ${!i}"
+  ./myprogram ${!i}
+  # valgrind will detect memory leaks
+  # echo "*** running with valgrind"
+  valgrind ./myprogram ${!i}
+done;
 
 echo "*** cleaning up, deleting myprogram"
 rm myprogram
